@@ -1,0 +1,1 @@
+/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home:21:0:1:64:true:1696514111000:x86_64
