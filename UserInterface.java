@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 
 
@@ -15,6 +16,7 @@ public class UserInterface extends JFrame implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private JTextArea textArea;
+	private Color initialBackgroundColor;
 
 	
 	public UserInterface() {
@@ -59,8 +61,11 @@ public class UserInterface extends JFrame implements Serializable {
 		item3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				getContentPane().setLayout(new FlowLayout());
-				getContentPane().setBackground(Color.green);
+				Random random = new Random(); 
+				float hue = random.nextFloat(); // Generate different hues for background color
+				Color newBackgroundColor = Color.getHSBColor(hue, 1.0f, 1.0f);
+				getContentPane().setBackground(newBackgroundColor);
+				
 				setVisible(true);
 				
 			}
@@ -84,6 +89,11 @@ public class UserInterface extends JFrame implements Serializable {
 		textArea = new JTextArea();
 		panel.add(new JScrollPane(textArea), BorderLayout.CENTER);
 		
+		
+		JFrame frame = new JFrame();
+		frame.setVisible(true);
+		
+		initialBackgroundColor = (Color) frame.getContentPane().getBackground();
 	}
 
 
